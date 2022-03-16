@@ -25,6 +25,7 @@ public:
             
             ListNode* temp = cur->next;
             prepre->next = cur;
+
             cur->next = pre;
             pre->next = temp;
             
@@ -40,3 +41,6 @@ public:
         return vhead->next;
     }
 };
+
+// 刷题记录
+// 20220225 二刷 通过
