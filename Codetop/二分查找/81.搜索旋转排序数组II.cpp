@@ -1,3 +1,6 @@
+// 一刷：2022 03 17 不会做
+// 二刷：2022 03 18 会做
+
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {

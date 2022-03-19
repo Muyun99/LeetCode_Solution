@@ -1,5 +1,6 @@
 // 一刷：2022 03 16 不会做
 // 二刷：2022 03 17 大概会做，不熟练
+// 三刷：2022 03 18 大概会做，卡了 mergeSort 的 if 判断
 
 class Solution {
 public:
@@ -8,7 +9,7 @@ public:
     void mergeSort(vector<int>& nums, int left, int right){
         if(left >= right)
             return;
-        int mid = (left + right) / 2;
+        int mid = left + (right - left) / 2;
         mergeSort(nums, left, mid);
         mergeSort(nums, mid + 1, right);
         
