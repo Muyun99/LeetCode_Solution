@@ -1,4 +1,6 @@
 // 一刷：2022 03 18 不会做
+// 一刷：2022 03 21 不会做，不会递推公式
+// 一刷：2022 03 22 会做，但是ans写在了内层循环
 
 // 动态规划
 // 时间复杂度：O(N^2)
@@ -34,36 +36,29 @@ using namespace std;
 
 class Solution {
 public:
-    int lengthOfLIS(vector<int> &nums) {
-        int len = nums.size();
-        if (len < 2) {
-            return len;
-        }
-
-        vector<int> tail;
-        tail.push_back(nums[0]);
-        // tail 结尾的那个索引
-        int end = 0;
-
-        for (int i = 1; i < len; ++i) {
-            if (nums[i] > tail[end]) {
-                tail.push_back(nums[i]);
-                end++;
-            } else {
+    int lengthOfLIS(vector<int>& nums) {
+        int size = nums.size();
+        vector<int> dp;
+        dp.push_back(nums[0]);   
+             
+        for(int i = 1; i < size; ++i){
+            if(nums[i] > dp.back())
+                dp.push_back(nums[i]);
+            else{
                 int left = 0;
-                int right = end;
-                while (left < right) {
-                    int mid = (left + right) >> 1;
-                    if (tail[mid] < nums[i]) {
+                int right = dp.size();
+                while(left <= right){
+                    int mid = (left + right) / 2;
+                    if(dp[mid] < nums[i])
                         left = mid + 1;
-                    } else {
-                        right = mid;
-                    }
+                    else   
+                        right = mid - 1;
                 }
-                tail[left] = nums[i];
+                dp[left] = nums[i];
             }
         }
-        return end + 1;
+        return dp.size();
+
     }
 };
 

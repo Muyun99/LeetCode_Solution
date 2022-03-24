@@ -1,5 +1,7 @@
 // 一刷：2022 03 17 不会做
 // 二刷：2022 03 18 不会做
+// 三刷：2022 03 21 会做，小地方写错了
+// 三刷：2022 03 22 会做
 
 // 双指针做法
 // 时间复杂度：O(n^2)
@@ -56,5 +58,48 @@ public:
 
         }
         return result;
+    }
+};
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int size = nums.size();
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> ans;
+        
+        for(int i = 0; i < size; ++i){
+            if(nums[i] > 0)
+                return ans;
+
+            if(i > 0 && nums[i] == nums[i-1])
+                continue;
+
+            int left = i + 1;
+            int right = size - 1;
+
+            while(left < right){
+                if(nums[i] + nums[left] + nums[right] < 0){
+                    while(left < right && nums[left] == nums[left + 1])
+                        ++left;
+                    ++left;
+                }
+                else if(nums[i] + nums[left] + nums[right] > 0){
+                    while(left < right && nums[right] == nums[right - 1])
+                        --right;
+                    --right;
+                }
+                else{
+                    ans.push_back(vector<int> {nums[i], nums[left], nums[right]});
+                    while(left < right && nums[right] == nums[right - 1])
+                        --right;
+                    while(left< right && nums[left] == nums[left + 1])
+                        ++left;
+                    --right;
+                    ++left;
+                }
+            }
+        }
+        return ans;
     }
 };

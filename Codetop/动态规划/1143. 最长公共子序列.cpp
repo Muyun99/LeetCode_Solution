@@ -1,4 +1,6 @@
 // // 一刷：2022 03 16 会做，但是递推公式冗余了
+// // 二刷：2022 03 19 大概会做，但是递推公式冗余了
+// // 三刷：2022 03 22 大概会做，但是还得巩固
 
 class Solution {
 public:
@@ -11,9 +13,9 @@ public:
         for(int i = 1; i <= size1; ++i)
             for(int j = 1; j <= size2; ++j){
                 if(text1[i-1] == text2[j-1])
-                    dp[i][j] = max(dp[i-1][j-1] + 1, max(dp[i][j-1], dp[i-1][j]));
+                    dp[i][j] = dp[i-1][j-1] + 1
                 else
-                    dp[i][j] = max(dp[i-1][j-1], max(dp[i][j-1], dp[i-1][j]));
+                    dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
             }
         return dp[size1][size2];
     }
