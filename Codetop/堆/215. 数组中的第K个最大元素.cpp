@@ -1,6 +1,7 @@
 // 一刷：2022 03 16 不会做
 // 二刷：2022 03 18 会做，很顺畅
 // 三刷：2022 03 21 基于堆排会做，较为顺畅，基于快排的卡了下
+// 四刷：2022 03 29 基于堆排会做，较为顺畅，基于快排的不会做。。
 
 
 // 一些注意的点
@@ -73,7 +74,7 @@ public:
 };
 
 
-// 基于堆排序
+// 基于大顶堆排序
 // 时间复杂度：O()
 // 空间复杂度：O()
 
@@ -186,5 +187,24 @@ public:
             }
         }
         return nums[0];
+    }
+};
+
+// 小顶堆调库
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<int>> pq;
+        for(int i = 0; i < k; ++i){
+            pq.push(nums[i]);
+        }
+        for(int i = k; i < nums.size(); ++i){
+            if(nums[i] > pq.top()){
+                pq.pop();
+                pq.push(nums[i]);
+            }
+        }
+        return pq.top();
     }
 };

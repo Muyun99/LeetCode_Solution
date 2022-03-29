@@ -10,7 +10,7 @@ public:
         // dp[0][j] = j, dp[i][0] = i
         // if(word[i] == word2[j])
                 // 不操作
-        //      dp[i][j] = min(dp[i-1][j-1], min(dp[i-1][j]))
+                // dp[i][j] = dp[i-1][j-1];
         // else
             // 增 
             // 删 dp[i][j-1] + 1 dp[i-1][j] + 1
