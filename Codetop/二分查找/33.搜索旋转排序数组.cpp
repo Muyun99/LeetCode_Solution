@@ -1,6 +1,8 @@
 // 一刷：2022 03 17 不会做
-// 一刷：2022 03 18 会做
-// 一刷：2022 03 21 会做
+// 二刷：2022 03 18 会做
+// 三刷：2022 03 21 会做
+// 四刷：2022 06 09 懂大概思路，细节出问题: while(left <= right)、if(nums[mid] >= nums[left])、nums[left] <= target
+
 
 // 二分查找
 class Solution {
@@ -10,7 +12,7 @@ public:
         int right = nums.size() - 1;
         int mid;
         while(left <= right){
-            mid = (right - left) / 2 + left;
+            mid = (right + left) / 2;
             if(nums[mid] == target) return mid;
 
             
@@ -22,7 +24,7 @@ public:
                     left = mid + 1;
             }
             else{
-                // 如果左侧有序
+                // 如果右侧有序
                 if(nums[mid] < target && target <= nums[right])
                     left = mid + 1;
                 else
