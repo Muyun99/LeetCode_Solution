@@ -3,6 +3,7 @@
 // 三刷：2022 03 21 会做
 // 四刷：2022 06 09 懂大概思路，细节出问题: while(left <= right)、if(nums[mid] >= nums[left])、nums[left] <= target
 // 五刷：2022 06 16 很多地方出错误
+// 六刷：2022 06 17 大概会做，if(nums[mid] >= nums[left]) 出错
 
 
 // 二分查找
