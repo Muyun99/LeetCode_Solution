@@ -1,3 +1,5 @@
+// 一刷：2022 06 28 不太熟练
+
 class Solution {
 public:
     vector<vector<int>> ans;
@@ -10,9 +12,7 @@ public:
         }
         for(int i = startIndex; i <= 9; ++i){
             path.push_back(i);
-            sum += i;
-            backtracking(k, n, sum, i + 1);
-            sum -= i;
+            backtracking(k, n, i + 1, sum + i);
             path.pop_back();
         }
     }
